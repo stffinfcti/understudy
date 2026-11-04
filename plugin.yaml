@@ -1,0 +1,23 @@
+name: understudy
+version: "1.0.0"
+manifest_version: 2
+api_version: 1
+description: "Audition cheaper models on your real Hermes history before you switch: replays past decisions on candidate models, judges each against what your current model did, and reports takeover rate, misses and projected cost."
+author: stffinfcti
+license: MIT
+homepage: https://github.com/stffinfcti/understudy
+requires_hermes: ">=0.22.6"
+tags: [models, cost, evaluation]
+provides_tools: [understudy_audition, understudy_report]
+provides_hooks: []
+capabilities: [llm.model_override, llm.provider_override]
+config_schema:
+  sample: {type: int, default: 20, description: "Past decisions replayed per candidate"}
+  days: {type: int, default: 14, description: "How many days back to sample conversations"}
+  budget_usd: {type: float, default: 1.5, description: "Hard spending cap per audition, in USD"}
+  concurrency: {type: int, default: 6, description: "Parallel model calls"}
+  baseline_sample: {type: int, default: 8, description: "Decisions your current model re-answers, to measure its own consistency and cost"}
+  judge_model: {type: str, default: "", description: "provider:model for the judge; empty uses your current model"}
+  include_persona: {type: bool, default: true, description: "Send an excerpt of the agent's instructions with each replay"}
+  exclude_sources: {type: list, default: [], description: "Session sources to skip, e.g. telegram"}
+  prices: {type: dict, default: {}, description: "USD per 1M tokens: 'provider:model' or 'model' -> {input, output, cache_read?}"}
