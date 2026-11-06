@@ -2,6 +2,8 @@
 
 ![Understudy](docs/banner.png)
 
+[![Demo](docs/demo.gif)](https://github.com/stffinfcti/understudy/releases/tag/v1.0.0)
+
 Audition cheaper models on your real Hermes history before you switch.
 Understudy replays a sample of your agent's actual past decisions — assistant
 replies and tool calls stored in the Hermes session database — on one or more
